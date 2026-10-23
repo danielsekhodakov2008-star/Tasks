@@ -1,4 +1,4 @@
-"""products = {
+products = {
     "apple": 10,
     "banana": 3,
     "milk": 7,
