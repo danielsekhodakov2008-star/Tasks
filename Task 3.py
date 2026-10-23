@@ -1,0 +1,38 @@
+tasks = {
+    "Домашнє завдання": "в процесі",
+    "Звіт": "очікує",
+    "Python": "виконано",
+    "Лабораторна робота": "очікує",
+    "Прочитати книгу": "в процесі"
+}
+
+def add_task(name, status):
+    tasks[name] = status
+
+def delete_task(name):
+    if name in tasks:
+        del tasks[name]
+
+def change_status(name, status):
+    if name in tasks:
+        tasks[name] = status
+
+add_task("Підготувати презентацію", "очікує")
+
+change_status("Домашнє завдання", "виконано")
+change_status("Звіт", "в процесі")
+change_status("Прочитати книгу", "очікує")
+
+delete_task("Python")
+
+print("Усі задачі:")
+print(tasks)
+
+waiting = []
+
+for name in tasks:
+    if tasks[name] == "очікує":
+        waiting.append(name)
+
+print("Задачі, які очікують:")
+print(waiting)
