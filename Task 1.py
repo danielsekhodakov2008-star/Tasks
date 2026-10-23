@@ -1,4 +1,4 @@
-"""text = "apple banana apple orange apple banana apple banana banana"
+text = "apple banana apple orange apple banana apple banana banana"
 
 def count_words(text):
     words = text.split()
