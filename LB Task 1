@@ -1,0 +1,30 @@
+import hashlib
+
+def generate_file_hashes(*file_paths):
+    hashes = {}
+
+    for file_path in file_paths:
+        try:
+            sha256 = hashlib.sha256()
+
+            with open(file_path, "rb") as file:
+                for block in iter(lambda: file.read(4096), b""):
+                    sha256.update(block)
+
+            hashes[file_path] = sha256.hexdigest()
+            print(f"File: {file_path} - Hash calculated successfully")
+
+        except FileNotFoundError:
+            print(f"Error: File not found: {file_path}")
+
+        except IOError:
+            print(f"Error: Cannot read file: {file_path}")
+
+    return hashes
+
+
+result = generate_file_hashes("file1.txt", "file2.txt")
+
+print("\nFile hashes:\n")
+for file_path, file_hash in result.items():
+    print(f"{file_path}: {file_hash}")
